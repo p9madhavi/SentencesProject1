@@ -93,6 +93,7 @@ public class SentencesArray{
                 System.out.println(sentences[i]);
             }
         }
+        System.out.println();
 //        System.out.println("Word Search Case Insensitive");
 //        System.out.println("Enter the Word to Search:: ");
 //        String findWord = null;

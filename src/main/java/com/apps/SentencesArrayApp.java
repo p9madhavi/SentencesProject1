@@ -1,7 +1,9 @@
 package com.apps;
 
 import com.examples.SentencesArray;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class SentencesArrayApp {
@@ -36,17 +38,17 @@ public class SentencesArrayApp {
                     break;
                 case "5":
                     int characterCount = anArray.printNumberOfCharacters();
-                    System.out.println();
+//                    System.out.println();
                     System.out.println("The Character Count is : " + characterCount);
                     break;
                 case "6":
                     int vowelCount = anArray.printNumberOfVowels();
-                    System.out.println();
+//                    System.out.println();
                     System.out.println("The Vowel count is :" + vowelCount);
                     break;
                 case "7":
                     System.out.println();
-                    System.out.print("Enter a word to be searched For Insensitive Comparisons: ");
+                    System.out.println("Enter a word to be searched For Insensitive Comparisons: ");
                     input = scan.nextLine();
                     System.out.println();
                     anArray.searchWordCaseInsensitive(input);
