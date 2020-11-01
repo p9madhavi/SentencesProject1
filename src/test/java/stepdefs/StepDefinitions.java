@@ -63,7 +63,7 @@ public class StepDefinitions {
         String expectedTenthLine = "8.search for a given word using case sensitive comparisons";
         String expectedEleventhLine = "9.Exit";
 
-        List<String> actualLines = null;
+        List<String> actualLines;
         try {
             actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
             Assert.assertEquals(actualLines.get(1),expectedSecondLine);
@@ -106,7 +106,7 @@ public class StepDefinitions {
 
         String expectedLine = "Select Option from the menu::: The number of sentences that have been entered 2";
 
-        List<String> actualLines = null;
+        List<String> actualLines;
         try {
             actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
             Assert.assertEquals(actualLines.get(40),expectedLine);
@@ -125,26 +125,25 @@ public class StepDefinitions {
         enterInput(input+"9"+System.lineSeparator());
         theApplication.main(new String [0]);
 
-//        String expectedLine = "Select Option from the menu::: " +
-//                "Sentences in the Array are::" +
-//                "1 Once upon a time there was an old mother pig" +
-//                "2 who had three little pigs and not enough food to eat";
+
         String expectedLine1 = "Select Option from the menu::: ";
         String expectedLine2 = "Sentences in the Array are::" ;
-//                "1 Once upon a time there was an old mother pig" +
-//                "2 who had three little pigs and not enough food to eat";
+        String expectedLine3 = "1 Once upon a time there was an old mother pig";
+        String expectedLine4 = "2 who had three little pigs and not enough food to eat";
 
         try {
-            List<String> actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);;
+            List<String> actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
             String actualLine1=actualLines.get(40);
             String actualLine2=actualLines.get(41);
+            String actualLine3=actualLines.get(42);
+            String actualLine4=actualLines.get(43);
 //            for(int i=40;i<45;i++) {
 //                actualLine = actualLine+actualLines.get(i);
 //            }
             Assert.assertEquals(actualLine1, expectedLine1);
             Assert.assertEquals(actualLine2, expectedLine2);
-//                Assert.assertEquals(actualLines.get(42), expectedLine);
-//                Assert.assertEquals(actualLines.get(43), expectedLine);
+             Assert.assertEquals(actualLine3, expectedLine3);
+             Assert.assertEquals(actualLine4, expectedLine4);
         } catch (IOException e) {
             Assert.fail("actual output file is not created.");
         }
@@ -156,7 +155,32 @@ public class StepDefinitions {
     }
 
     @Then("the application should display all the sentences in the reverse order")
-    public void theApplicationShouldDisplayAllTheSentencesInTheReverseOrder() {
+    public void printReverse() {
+        enterInput(input+"9"+System.lineSeparator());
+        theApplication.main(new String [0]);
+
+
+        String expectedLine1 = "Select Option from the menu::: ";
+        String expectedLine2 = "The Reverse order of Sentences are :: ";
+        String expectedLine3 = "2 who had three little pigs and not enough food to eat";
+        String expectedLine4 = "1 Once upon a time there was an old mother pig";
+
+        try {
+            List<String> actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
+            String actualLine1=actualLines.get(40);
+            String actualLine2=actualLines.get(41);
+            String actualLine3=actualLines.get(42);
+            String actualLine4=actualLines.get(43);
+//            for(int i=40;i<45;i++) {
+//                actualLine = actualLine+actualLines.get(i);
+//            }
+            Assert.assertEquals(actualLine1, expectedLine1);
+            Assert.assertEquals(actualLine2, expectedLine2);
+            Assert.assertEquals(actualLine3, expectedLine3);
+            Assert.assertEquals(actualLine4, expectedLine4);
+        } catch (IOException e) {
+            Assert.fail("actual output file is not created.");
+        }
     }
 
     @And("user enters the fifth option")
@@ -169,16 +193,15 @@ public class StepDefinitions {
         enterInput(input+"9"+System.lineSeparator());
         theApplication.main(new String [0]);
 
-        String expectedLine = "Select Option from the menu::: The Character Count is : 77";
+        String expectedLine1 = "Select Option from the menu::: ";
+        String expectedLine2 = "The Character Count is : 77";
 
-        List<String> actualLines = null;
+        List<String> actualLines;
         try {
-//            LOG.debug("actuallines value :" + actualLines);
             actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
-//            LOG.debug("actuallines value :" + actualLines);
-            Assert.assertEquals(actualLines.get(40),expectedLine);
-//            LOG.debug("actuallines value :" + actualLines.get(40));
-//            LOG.debug("expectedline value :" + expectedLine);
+            Assert.assertEquals(actualLines.get(40),expectedLine1);
+            Assert.assertEquals(actualLines.get(42),expectedLine2);
+
         } catch (IOException e) {
             Assert.fail("actual output file is not created.");
         }
@@ -194,12 +217,14 @@ public class StepDefinitions {
         enterInput(input+"9"+System.lineSeparator());
         theApplication.main(new String [0]);
 
-        String expectedLine = "Select Option from the menu::: The Vowel count is :32";
-
-        List<String> actualLines = null;
+        String expectedLine1 = "Select Option from the menu::: ";
+        String expectedLine2 = "The Vowel count is :32";
+        List<String> actualLines ;
         try {
             actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
-            Assert.assertEquals(actualLines.get(40),expectedLine);
+            Assert.assertEquals(actualLines.get(40),expectedLine1);
+            Assert.assertEquals(actualLines.get(41),expectedLine2);
+
         } catch (IOException e) {
             Assert.fail("actual output file is not created.");
         }
@@ -211,40 +236,10 @@ public class StepDefinitions {
         input = input + "7" +System.lineSeparator();
     }
 
-
-    @Then("the application should display the Sentence that have the Word {string} and caseInsensitive")
-    public void WordSearchCaseInsensitive(String searchedWord) {
-        enterInput(input+"9"+System.lineSeparator());
-        theApplication.main(new String [0]);
-
-        String expectedLine = "";
-
-        List<String> actualLines = null;
-        try {
-            actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
-
-            Assert.assertEquals(actualLines.get(40),expectedLine);
-        } catch (IOException e) {
-            Assert.fail("actual output file is not created.");
-        }
-    }
-
-    @And("user enters the eighth option")
-    public void userEntersTheEighthOption() {
-        input = input + "8" +System.lineSeparator();
-    }
-
-    @Then("the application should display the SearchedWord casesensitive")
-    public void WordSearchCaseSensitive() {
-
-    }
-
-
     @And("user enters {string} as the search word")
     public void userEntersAsTheSearchWord(String searchWord) {
 
         input = input + searchWord +System.lineSeparator();
-
 
     }
 
@@ -255,7 +250,7 @@ public class StepDefinitions {
 
         String expectedLine ="who had three little pigs and not enough food to eat";
         try {
-            List<String> actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);;
+            List<String> actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
             String actualLine=actualLines.get(43);
 
             Assert.assertEquals(actualLine, expectedLine);
@@ -263,6 +258,47 @@ public class StepDefinitions {
             Assert.fail("actual output file is not created.");
         }
 
+    }
+
+    @And("user enters the eighth option")
+    public void userEntersTheEighthOption() {
+        input = input + "8" +System.lineSeparator();
+    }
+
+    @And("user enters {string} as the search word which is caseSensitive")
+    public void userEntersAsTheSearchWordWhichIsCaseSensitive(String searchWord) {
+        input = input + searchWord +System.lineSeparator();
+    }
+
+    @Then("the application should display the first sentence")
+    public void theApplicationShouldDisplayTheFirstSentence() {
+        enterInput(input+"9"+System.lineSeparator());
+        theApplication.main(new String [0]);
+
+        String expectedLine ="Once upon a time there was an old mother pig";
+        try {
+            List<String> actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
+
+            Assert.assertEquals(actualLines.get(42), expectedLine);
+        } catch (IOException e) {
+            Assert.fail("actual output file is not created.");
+        }
+    }
+
+
+    @Then("the application should display an error message")
+    public void theApplicationShouldDisplayAnErrorMessage() {
+        enterInput(input+"9"+System.lineSeparator());
+        theApplication.main(new String [0]);
+
+        String expectedLine ="Select Option from the menu::: select case 1 first for entering the sentence";
+        try {
+            List<String> actualLines = FileUtils.readLines(actualOutputFile, StandardCharsets.UTF_8);
+
+            Assert.assertEquals(actualLines.get(12), expectedLine);
+        } catch (IOException e) {
+            Assert.fail("actual output file is not created.");
+        }
     }
 }
 

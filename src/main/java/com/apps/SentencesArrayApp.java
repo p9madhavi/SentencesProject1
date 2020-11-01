@@ -38,12 +38,12 @@ public class SentencesArrayApp {
                     break;
                 case "5":
                     int characterCount = anArray.printNumberOfCharacters();
-//                    System.out.println();
+                    System.out.println();
                     System.out.println("The Character Count is : " + characterCount);
                     break;
                 case "6":
                     int vowelCount = anArray.printNumberOfVowels();
-//                    System.out.println();
+                    System.out.println();
                     System.out.println("The Vowel count is :" + vowelCount);
                     break;
                 case "7":

@@ -7,6 +7,8 @@ public class SentencesArray{
     String[] sentences = new String[10];
     int currentIndex=0;
     String vowel = "aeiou";
+    int vowelCount = 0;
+    int charCount = 0;
 
     public void showMenu(){
 
@@ -38,6 +40,10 @@ public class SentencesArray{
     }
 
     public void printSentence(){
+
+        if(currentIndex == 0){
+            System.out.println("select case 1 first for entering the sentence");
+        }
         System.out.println();
         System.out.println("Sentences in the Array are::");
         for(int i=0;i<currentIndex;i++){
@@ -46,11 +52,17 @@ public class SentencesArray{
     }
 
     public void countSentences(){
+        if(currentIndex == 0){
+            System.out.println("select case 1 first for entering the sentence");
+        }
         System.out.println("The number of sentences that have been entered " + currentIndex);
     }
 
     public void printReverseSentences() {
         System.out.println();
+        if(currentIndex == 0){
+            System.out.println("select case 1 first for entering the sentence");
+        }
         System.out.println("The Reverse order of Sentences are :: ");
 
         for(int i=currentIndex-1;i>=0;i--){
@@ -60,33 +72,45 @@ public class SentencesArray{
     }
 
     public int printNumberOfCharacters(){
-
-        int charCount = 0;
-        for(int i=0;i<currentIndex;i++) {
-            String tempString = new String(sentences[i]);
-            tempString = tempString.replaceAll("\\s+","");
-            charCount = charCount +tempString.length();
+        System.out.println();
+        if(currentIndex == 0){
+            System.out.println("select case 1 first for entering the sentence");
         }
+
+            for (int i = 0; i < currentIndex; i++) {
+                String tempString =new String(sentences[i]);
+                tempString = tempString.replaceAll("\\s+", "");
+                charCount = charCount + tempString.length();
+            }
+
         return charCount;
     }
 
     public int printNumberOfVowels(){
 
-        int vowelCount = 0;
-        for(int i=0;i<currentIndex;i++) {
+        if(currentIndex == 0){
+            System.out.println("select case 1 first for entering the sentence");
+        }
 
-            for (int count = 0; count < sentences[i].length(); count++) {
+            for (int i = 0; i < currentIndex; i++) {
 
-                if (vowel.contains(String.valueOf(sentences[i].toLowerCase().charAt(count)))) {
-                    vowelCount = vowelCount + 1;
+                for (int count = 0; count < sentences[i].length(); count++) {
+
+                    if (vowel.contains(String.valueOf(sentences[i].toLowerCase().charAt(count)))) {
+                        vowelCount = vowelCount + 1;
+                    }
                 }
             }
-//            System.out.println("the vowelcount of " + (i+1) + "  is " + vowelCount);
-        }
-//            System.out.println("the vowelcount is " + vowelCount);
+
               return vowelCount;
     }
+
+
     public void searchWordCaseInsensitive(String searchWord){
+
+        if(currentIndex == 0){
+            System.out.println("select case 1 first for entering the sentence");
+        }
 
         for(int i=0; i<currentIndex;i++){
             if(sentences[i].toLowerCase().contains(searchWord.toLowerCase())){
@@ -94,26 +118,13 @@ public class SentencesArray{
             }
         }
         System.out.println();
-//        System.out.println("Word Search Case Insensitive");
-//        System.out.println("Enter the Word to Search:: ");
-//        String findWord = null;
-//        for(int i=0;i<sentences.length;i++){
-//            String[] tempString = sentences[i].split("\\s");
-//            System.out.println("temp string is "+ tempString);
-//
-//                for(int j=0;j<tempString.length;j++){
-//                    System.out.println("temp string splits is "+ tempString[j]);
-//                    System.out.println("temp string splits lenght is "+ tempString.length);
-//                    if(searchWord == tempString[j]){
-//                        findWord = tempString[j];
-//                    }
-//                }
-//
-//        }
-//        return findWord;
     }
 
     public void searchWordCaseSensitive(String searchWord) {
+
+        if(currentIndex == 0){
+            System.out.println("select case 1 first for entering the sentence");
+        }
 
         for (int i = 0; i < currentIndex; i++) {
             if (sentences[i].contains(searchWord)) {

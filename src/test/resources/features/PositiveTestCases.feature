@@ -10,7 +10,6 @@ Feature:Positive Test Cases Of Sentence Array
     And user enters the second option
     Then the application should display all the sentences
 
-
   Scenario: To Verify that option 3 works correctly
     Given The application is started
     When user enters two sentences by following prompts
@@ -46,7 +45,8 @@ Feature:Positive Test Cases Of Sentence Array
     Given The application is started
     When user enters two sentences by following prompts
     And user enters the eighth option
-    Then the application should display the SearchedWord casesensitive
+    And user enters "mother" as the search word which is caseSensitive
+    Then the application should display the first sentence
 
 
 
